@@ -1,5 +1,14 @@
 # Praxis DigitalOcean Marketplace 1-Click App
 
+<div align="center">
+  <a href="https://praxis.causq.com/">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/CausQ-Networks/praxis/main/public/logo/praxis-logo-white.png">
+      <img alt="Praxis Logo" src="https://raw.githubusercontent.com/CausQ-Networks/praxis/main/public/logo/praxis-logo.png" width="280">
+    </picture>
+  </a>
+</div>
+
 This repository contains Packer templates and scripts to build a DigitalOcean Marketplace 1-Click App for [Praxis](https://github.com/CausQ-Networks/praxis), a self-hosted tunneled mesh reverse proxy with access control.
 
 ## TL;DR - Quick Build
@@ -14,8 +23,8 @@ packer init plugins.pkr.hcl
 export DIGITALOCEAN_API_TOKEN=your_digitalocean_token
 
 # Validate and build
-packer validate pangolin-24-04/template.json
-packer build pangolin-24-04/template.json
+packer validate praxis-24-04/template.json
+packer build praxis-24-04/template.json
 ```
 
 ## Prerequisites
@@ -27,7 +36,7 @@ packer build pangolin-24-04/template.json
 ## Directory Structure
 
 ```
-pangolin-marketplace/
+praxis-marketplace/
 ├── common/
 │   ├── files/
 │   │   └── var/
@@ -38,9 +47,9 @@ pangolin-marketplace/
 │       ├── 018-force-ssh-logout.sh
 │       ├── 020-application-tag.sh
 │       └── 900-cleanup.sh
-└── pangolin-24-04/
+└── praxis-24-04/
     ├── scripts/
-    │   ├── 010-pangolin.sh
+    │   ├── 010-praxis.sh
     │   └── 020-firewall.sh
     └── template.json
 ```
@@ -50,7 +59,7 @@ pangolin-marketplace/
 1. Clone this repository:
    ```bash
    git clone https://github.com/your-username/praxis-marketplace.git
-   cd pangolin-marketplace
+   cd praxis-marketplace
    ```
 
 2. For Packer 1.7.0+, initialize the DigitalOcean plugin:
@@ -83,12 +92,12 @@ pangolin-marketplace/
 
 5. Validate the template:
    ```bash
-   packer validate pangolin-24-04/template.json
+   packer validate praxis-24-04/template.json
    ```
 
 6. Build the image:
    ```bash
-   packer build pangolin-24-04/template.json
+   packer build praxis-24-04/template.json
    ```
 
 7. The build will output a snapshot ID. Note this ID for submission to the Marketplace.
@@ -122,17 +131,17 @@ If you encounter issues during the build:
 
 1. Add the `-debug` flag to prompt for confirmation at each build step:
    ```bash
-   packer build -debug pangolin-24-04/template.json
+   packer build -debug praxis-24-04/template.json
    ```
 
 2. Use the `-on-error=ask` flag to debug failed builds:
    ```bash
-   packer build -on-error=ask pangolin-24-04/template.json
+   packer build -on-error=ask praxis-24-04/template.json
    ```
 
 3. Enable verbose logging:
    ```bash
-   PACKER_LOG=1 packer build pangolin-24-04/template.json
+   PACKER_LOG=1 packer build praxis-24-04/template.json
    ```
 
 ## License
